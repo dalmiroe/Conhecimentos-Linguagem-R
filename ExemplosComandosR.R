@@ -1,5 +1,5 @@
 #Exemplos de comandos R - Obtidos do cursa da DSA - 2019
-# element-wise, elemento por elemento - matriz A e B, significa que faz  ação para a elemento de A com Elemento de B
+# element-wise, elemento por elemento - matriz A e B, significa que faz  ação para o elemento de A com Elemento de B
 help("iris") ## sintaxe para obter ajuda
 RSiteSearch('filter') ## help via web
 
@@ -14,7 +14,8 @@ setwd(vsCaminho) ## setar
 getwd() ## obter
 
 # diretório de trabalho
-list.files()
+list.files() 
+dir()
 
 # Criar vetor
 v1 = seq(1:30)
@@ -108,5 +109,27 @@ Player = dbReadTable(con, "Player")
 View(players)
 #Exemplo de replace
 ?str_replace_all
+
+#07/05/20
+#Comandos para trabalhar leitura de html
+#Usar pcts rvest, stringr, tidyr
+pagina <- read_html(url)
+#remover linhas, o detalhe é o sinal de -
+tab <- tab[-(1:2), ]
+#renomear coluna
+names(tab) <- c("number", "date", "site", "result")
+#Separar colunas - remove = true, remove a coluna origem
+tab <- separate(tab, coluna_origem, c('col1', 'col2'), sep = ', ', remove = TRUE)
+#Criar novas colunas e limpar dados de colunas com gsub
+pattern = " \\d+$" # usando express-ao regular para formar 
+#Criando uma nova coluna
+tab$winnerScore = as.numeric(str_extract(tab$winner,pattern))
+tab$loserScore = as.numeric(str_extract(tab$loser,pattern))
+#Limpando as informações que forma para as novas colunas
+tab$winner = gsub(pattern,"",tab$winner)
+tab$loser = gsub(pattern,"",tab$loser)
+head(tab)
+#Gerar um arquivo csv a partir do DF
+write.csv(tab,"arqx.csv",row.names = F)
 
 
