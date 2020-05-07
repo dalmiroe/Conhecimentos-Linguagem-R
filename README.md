@@ -1,2 +1,2 @@
 # Conhecimentos-Linguagem-R
-Materiais relacionados a linguagem R 
+Estudos realizado sobre a linguagem R 
