@@ -132,4 +132,7 @@ head(tab)
 #Gerar um arquivo csv a partir do DF
 write.csv(tab,"arqx.csv",row.names = F)
 
+##20/05
+##set.seed(nr) - usado para obter a mesma porção de um ds para um exemplo. 
+
 
